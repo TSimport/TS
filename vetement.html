@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Page de calcul</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="css3.css">
+</head>
+<body>
+	<div class="container">
+		<div class="links">
+			<a href="#" onclick="afficherCadre('ensemble')">Ensemble</a>
+			<div id="cadre-ensemble" style="display:none;">
+				<label for="prix-ensemble">Donner le prix en euro :</label>
+				<input type="text" id="prix-ensemble">
+				<button onclick="calculer('ensemble')">OK</button>
+				<p id="resultat-ensemble"></p>
+			<img src="oo.png" width="50" height="50"></div>
+
+            <a href="#" onclick="afficherCadre('manteau')">Manteau,Capote,Veste</a>
+			<div id="cadre-manteau" style="display:none;">
+				<label for="prix-manteau">Donner le prix en euro :</label>
+				<input type="text" id="prix-manteau">
+				<button onclick="calculer('manteau')">OK</button>
+				<p id="resultat-manteau"></p>
+			</div>
+
+            <a href="#" onclick="afficherCadre('chemise')">Chemise</a>
+			<div id="cadre-chemise" style="display:none;">
+				<label for="prix-chemise">Donner le prix en euro :</label>
+				<input type="number" id="prix-chemise">
+				<button onclick="calculer('chemise')">OK</button>
+				<p id="resultat-chemise"></p>
+			</div>
+
+            <a href="#" onclick="afficherCadre('Blazer')">Blazer</a>
+			<div id="cadre-Blazer" style="display:none;">
+				<label for="prix-Blazer">Donner le prix en euro :</label>
+				<input type="number" id="prix-Blazer">
+				<button onclick="calculer('Blazer')">OK</button>
+				<p id="resultat-Blazer"></p>
+			</div>
+            <a href="#" onclick="afficherCadre('Pantalon')">Pantalon,Jeans</a>
+			<div id="cadre-Pantalon" style="display:none;">
+				<label for="prix-Pantalon">Donner le prix en euro :</label>
+				<input type="number" id="prix-Pantalon">
+				<button onclick="calculer('Pantalon')">OK</button>
+				<p id="resultat-Pantalon"></p>
+			</div>
+
+			<a href="#" onclick="afficherCadre('robeSoiree')">Robes soirée</a>
+			<div id="cadre-robeSoiree" style="display:none;">
+				<label for="prix-robeSoiree">Donner le prix en euro :</label>
+				<input type="text" id="prix-robeSoiree">
+				<button onclick="calculer('robeSoiree')">OK</button>
+				<p id="resultat-robeSoiree"></p>
+			</div>
+		
+    <a href="#" onclick="afficherCadre('robeSimple')">Robes Simples</a>
+    <div id="cadre-robeSimple" style="display:none;">
+        <label for="prix-robeSimple">Donner le prix en euro :</label>
+        <input type="text" id="prix-robeSimple">
+        <button onclick="calculer('robeSimple')">OK</button>
+        <p id="resultat-robeSimple"></p>
+    </div>
+    <a href="#" onclick="afficherCadre('EnsembleBebe')">Ensemble Bébé</a>
+			<div id="cadre-EnsembleBebe" style="display:none;">
+				<label for="prix-EnsembleBebe">Donner le prix en euro :</label>
+				<input type="number" id="prix-EnsembleBebe">
+				<button onclick="calculer('EnsembleBebe')">OK</button>
+				<p id="resultat-EnsembleBebe"></p>
+			</div>
+           
+			<img src="oo.png" width="50" height="50">
+</div>
+</div>
+
+	<script>
+		function afficherCadre(type) {
+			// Afficher le cadre correspondant au type de chaussure
+			var cadre = document.getElementById("cadre-" + type);
+			cadre.style.display = "block";
+
+			// Empêcher le lien de rediriger vers une autre page
+			event.preventDefault();
+		}
+
+		function calculer(type) {
+			// Récupérer la valeur du prix en euro
+			var prixEnEuro = document.getElementById("prix-"+type).value;
+			// Calculer le prix en dinar
+			var prixEnDinar;
+            switch (type) {
+  case 'ensemble':
+   prixEnDinar = (parseFloat(prixEnEuro) + 2) * (3.66 )+ 15;
+    break;
+  case 'manteau':
+   prixEnDinar = (parseFloat(prixEnEuro) + 3) * (3.66)+ 15;
+    break;
+    case 'chemise':
+   prixEnDinar = (parseFloat(prixEnEuro) + 1) * (3.66) + 10;
+    break;
+    case 'Blazer':
+   prixEnDinar = (parseFloat(prixEnEuro) + 1.5) * (3.66)+ 10;
+    break;
+    case 'Pantalon':
+   prixEnDinar = (parseFloat(prixEnEuro) + 1) *( 3.66) + 10;
+    break;
+    case 'robeSoiree':
+   prixEnDinar = (parseFloat(prixEnEuro) + 2) * (3.66) + 15;
+    break;
+    case 'robeSimple':
+   prixEnDinar = (parseFloat(prixEnEuro) + 2) * (3.66) + 12;
+    break;
+    case 'EnsembleBebe':
+   prixEnDinar = (parseFloat(prixEnEuro) + 1) * (3.66) + 12;
+    break;
+   
+
+}            
+             prixEnDinar =Math.round(prixEnDinar);
+			// Afficher le résultat dans l'élément correspondant
+			var resultat = document.getElementById("resultat-" + type);
+			resultat.innerHTML = "Le prix en dinar est : " + prixEnDinar + " dt";
+		}
+	</script>
+</body>
+</html>
